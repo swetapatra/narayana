@@ -22,7 +22,7 @@ import org.jboss.jbossts.star.annotation.Prepare;
 import org.jboss.jbossts.star.annotation.Rollback;
 import org.jboss.jbossts.star.annotation.SRA;
 import org.jboss.jbossts.star.annotation.Status;
-import org.jboss.jbossts.star.client.SRAParticipant.SRAStatus;
+import org.jboss.jbossts.star.client.SRAStatus;
 import org.jboss.jbossts.star.client.ServerSRAFilter;
 import org.jboss.jbossts.star.service.Coordinator;
 import org.jboss.jbossts.star.util.TxMediaType;
@@ -117,7 +117,7 @@ public class SRATest extends BaseTest {
         @Commit
         public Response commitWork(@HeaderParam(RTS_HTTP_CONTEXT_HEADER) String atId,
                                    @PathParam("txid") String sraId) throws NotFoundException {
-            return updateState(org.jboss.jbossts.star.client.SRAParticipant.SRAStatus.TransactionCommitted, sraId);//getCurrentActivityId());
+            return updateState(SRAStatus.TransactionCommitted, sraId);//getCurrentActivityId());
         }
 
         @PUT
@@ -145,7 +145,7 @@ public class SRATest extends BaseTest {
             return Response.status(Response.Status.OK).entity(Entity.text(SRAStatus.TransactionActive)).build(); // TODO
         }
 
-        private Response updateState(org.jboss.jbossts.star.client.SRAParticipant.SRAStatus status, String activityId) {
+        private Response updateState(SRAStatus status, String activityId) {
             return Response.ok().build();
         }
     }

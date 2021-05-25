@@ -69,7 +69,7 @@ import java.util.regex.Pattern;
 
 /**
  * A utility class for controlling the lifecycle of Long Running Actions (SRAs) but the prefered mechanism is to use
- * the annotation in the {@link io.narayana.sra.annotation} package
+ * the annotation in the {@link org.jboss.jbossts.star.annotation} package
  */
 @RequestScoped
 public class SRAClient implements SRAClientAPI, Closeable {
